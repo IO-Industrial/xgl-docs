@@ -1,0 +1,58 @@
+site_name: XGL Documentation
+docs_dir: ./docs_src
+site_dir: ./docs/2.3
+site_description: 'Documentation for XGL'
+site_author: 'Joe Turner'
+site_url: 'https://io-industrial.com/'
+repo_url: 'https://github.com/io-industrial/xgl-docs'
+repo_name: 'io-industrial/xgl-docs'
+copyright: 'Copyright &copy; 2022 IO Industrial'
+strict: false   # mkdocs-materials will prevent running on 0.0.0.0 otherwise (or have custom image)
+theme:
+  name: 'material'
+#  logo: 'assets/logo.png'
+  favicon: 'assets/favicon-32x32.png'
+  features:
+    - navigation.tabs  # changed with version 6 of mkdocs-materials
+nav:
+  - Introduction:
+    - 'index.md'
+markdown_extensions:
+  - codehilite
+  - admonition
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - tables
+  # - mdx_truly_sane_lists
+extra:
+  social:
+    - icon: 'fontawesome/brands/github-alt'
+      link: 'https://github.com/io-industrial'
+extra_css:
+- assets\stylesheets\version-select.css
+- assets\stylesheets\branding.css
+- assets\stylesheets\edgey.css
+- assets\stylesheets\newexample.css
+extra_javascript:
+- assets\javascripts\version-select.js
+plugins:
+  - search
+  - macros:
+      include_yaml:
+        - template_macros.yaml
+      on_error_fail: true
+  - htmlproofer:
+      enabled: !ENV [ENABLED_HTMLPROOFER, False]
+      raise_error: True
+      raise_error_excludes:
+        404: ['https://support.google.com/accounts/answer/185833?hl=en',
+              'https://support.google.com/accounts/answer/6010255?hl=en']
+        429: ['*']
